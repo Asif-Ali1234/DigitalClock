@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+    <link rel="stylesheet" href="clock_styles.css">
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css" integrity="sha384-UHRtZLI+pbxtHCWp1t77Bi1L4ZtiqrqD80Kn4Z8NTSRyMA2Fd33n5dQ8lWUE00s/" crossorigin="anonymous"></head>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+    <title>Web clock</title>
+</head>
+<body onload="clockinitialising()">
+    <div class="container">
+        <div class="labelsdiv">
+            <label class="active" onclick="changemode('clkmode')"  id="clkmode">Clock</label>
+            <label onclick="changemode('stpwtchmode')" id="stpwtchmode">Stop Watch</label>
+            <label onclick="changemode('timermode')" id="timermode">Timer</label>
+        </div>
+            <div class="clock" id="clk">
+                <span id="hrs"></span>
+                <span>:</span>
+                <span id="min"><sub>mins</sub></span>
+                <span>:</span>
+                <span id="sec"><sub>Sec</sub></span>
+            </div>
+
+            <div class="clock" id="stpwatch">
+                <span id="stphrs">00</span>
+                <span>:</span>
+                <span id="stpmin">00</span>
+                <span>:</span>
+                <span id="stpsec">00</span>
+                <span>:</span>
+                <span id="stpmillisec">00</span><br>
+                <div class="row btnrow">
+                    <button type="button" class="btn btn-outline-danger" onclick="startstpwtch()" id="stpwtchstartbtn"><i class="fas fa-play"></i></button>
+                    <button type="button" class="btn btn-outline-secondary"onclick="pausestpwtch()" id="stpwtchpausebtn" style="display: none;"><i class="fas fa-pause"></i></button>
+                    <button type="button" class="btn btn-outline-primary" onclick="lapsestpwtch()" id="stpwtchlapsebtn" style="display: none;"><i class="fas fa-flag-checkered"></i></button>
+                    <button type="button" class="btn btn-outline-dark" onclick="stopstpwtch()" id="stpwtchstopbtn" style="display: none;"><i class="fas fa-stop"></i></button><br>
+                </div>
+                <div id="timestamps">
+
+                </div>
+            </div>
+
+            <div class="clock" id="timer">
+                <span class="uparrows" id="u1"><i class="fas fa-caret-up" onclick="increasenumber('timerhrs')"></i></span>
+                <span class="uparrows" id="u2"><i class="fas fa-caret-up" onclick="increasenumber('timermin')"></i></span>
+                <span class="uparrows" id="u3"><i class="fas fa-caret-up" onclick="increasenumber('timersec')"></i></span><br>
+                <span id="timerhrs">00</span><span class="timernames">hrs</span>
+                <span>:</span>
+                <span id="timermin">00</span><span class="timernames">min</span>
+                <span>:</span>
+                <span id="timersec">00</span><span class="timernames">sec</span><br>
+                <span class="downarrows" id="d1"><i class="fas fa-caret-down" onclick="decreasenumber('timerhrs')"></i></span>
+                <span class="downarrows" id="d2"><i class="fas fa-caret-down" onclick="decreasenumber('timermin')"></i></span>
+                <span class="downarrows" id="d3"><i class="fas fa-caret-down" onclick="decreasenumber('timersec')"></i></span><br>
+                <div class="row btnrow">
+                    <button type="button" class="btn btn-outline-danger" onclick="starttimer()" id="timerstartbtn"><i class="fas fa-play"></i></button>
+                    <button type="button" class="btn btn-outline-secondary"onclick="pausetimer()" id="timerpausebtn" style="display: none;"><i class="fas fa-pause"></i></button>
+                    <button type="button" class="btn btn-outline-dark" onclick="stoptimer()" id="timerstopbtn" style="display: none;"><i class="fas fa-stop"></i></button><br>
+                </div>
+                <p id="alertmsg"></p>
+            </div>
+    </div>
+    <script type="text/javascript" src="clock_script.js"></script>
+</body>
+</html>
